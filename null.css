@@ -10,6 +10,66 @@
     background: linear-gradient(to bottom, black 50%, #1A1A1A 50%);
 }
 
+
+/* ====== ВЕРХНЯЯ ПАНЕЛЬ ====== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #E88A44; /* 🔥 твой цвет */
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    
+}
+
+/* Лого слева */
+.navbar .logo {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 2%;
+
+}
+
+/* Меню справа */
+.navbar .menu {
+    display: flex;
+    gap: 32px;
+    margin-right: 2%;
+}
+
+/* Ссылки */
+.navbar .menu a {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar .menu a:hover {
+    opacity: 0.7;
+}
+
+/* Чтобы контент не залезал под панель */
+body {
+    padding-top: 80px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.logo {
+    margin: 0;
+    padding: 0;
+}
+
+
 #title {
     color: #E88A44;
     text-align: center;
@@ -179,7 +239,7 @@
 }
 
 #title_6 {
-    margin-top: 42%;
+    margin-top: 40%;
     text-align: center;
     font-size: 28px;
     color: #E88A44;
@@ -364,5 +424,6 @@
     margin-top: 25%;
     margin-bottom: 20%;
 }
+
 
 
