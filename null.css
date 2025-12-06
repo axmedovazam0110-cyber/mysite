@@ -18,7 +18,7 @@
     left: 0;
     width: 100%;
     background: #E88A44; /* 🔥 твой цвет */
-    padding: 15px 0;
+    padding: 12.5px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +29,7 @@
 /* Лого слева */
 .navbar .logo {
     color: #000000;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     margin-left: 2%;
 
@@ -38,7 +38,7 @@
 /* Меню справа */
 .navbar .menu {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     margin-right: 2%;
 }
 
@@ -86,57 +86,7 @@ html {
 }
 
 
-.beautiful-button {
-    position: relative;
-    display: inline-block;
-    background: linear-gradient(to bottom, #E88A44, #000000);
-    color: white;
-    font-family: "Segoe UI", sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    padding: 14px 28px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px #E88A44;
-    animation: button-shimmer 2s infinite;
-    transition: all 0.3s ease-in-out;
-}
 
-.beautiful-button:hover {
-    background: linear-gradient(to bottom, #E88A44);
-    animation: button-particles 1s ease-in-out infinite;
-    transform: translateY(-2px);
-}
-
-.beautiful-button:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 10px #E88A44;
-}
-
-@keyframes button-shimmer {
-    0% {
-    background-position: left top;
-    }
-    100% {
-    background-position: right bottom;
-    }
-}
-
-@keyframes button-particles {
-    0% {
-    background-position: left top;
-    }
-    100% {
-    background-position: right bottom;
-    }
-}
-
-.beautiful-button {
-    display: block;
-    margin: 0 auto;
-    margin-top: 112px;
-}
 
 #title_2 {
     margin-top: 25%;
