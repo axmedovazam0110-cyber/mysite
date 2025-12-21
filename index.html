@@ -26,7 +26,9 @@
             background-color: var(--secondary-color);
             color: var(--text-color);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Плавный скролл */
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
 
         .container {
@@ -40,6 +42,9 @@
             background-color: #000000;
             border-bottom: 1px solid var(--accent-border);
             padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-content {
@@ -53,35 +58,41 @@
 
         .logo {
             color: var(--primary-color);
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             text-decoration: none;
+            white-space: nowrap;
         }
 
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: 15px;
         }
 
         .nav-menu a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
             transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 6px;
         }
 
         .nav-menu a:hover {
             color: var(--primary-color);
+            background-color: rgba(255, 122, 0, 0.1);
         }
 
         .buy-btn {
             background-color: var(--primary-color);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 14px;
             transition: background-color 0.3s;
+            white-space: nowrap;
         }
 
         .buy-btn:hover {
@@ -91,107 +102,114 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px 40px;
             background: linear-gradient(135deg, #000000 0%, #1a0c00 100%);
             position: relative;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 15px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            font-size: 16px;
+            max-width: 90%;
+            margin: 0 auto 30px;
             opacity: 0.9;
+            line-height: 1.5;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
             max-width: 1000px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
 
         .feature-card {
             background: var(--accent-bg);
             border: 1px solid var(--accent-border);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 12px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 122, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 122, 0, 0.2);
         }
 
         .feature-icon {
-            font-size: 32px;
+            font-size: 24px;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .feature-title {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
+            line-height: 1.3;
         }
 
         .description {
-            max-width: 800px;
-            margin: 40px auto 40px;
+            max-width: 90%;
+            margin: 30px auto 30px;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             opacity: 0.9;
+            line-height: 1.5;
         }
 
         .cta-button {
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
+            padding: 12px 24px;
+            border-radius: 24px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.4);
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
         }
 
         .cta-button:hover {
             background-color: #e66d00;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 6px 16px rgba(255, 122, 0, 0.5);
         }
 
         /* Section Template */
         .section {
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
         }
 
         .section h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 15px;
         }
 
         .section p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            font-size: 16px;
+            max-width: 90%;
+            margin: 0 auto 30px;
             opacity: 0.9;
         }
 
         /* Muscle Groups Section */
         .muscle-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -199,148 +217,170 @@
         .muscle-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 8px;
+            padding: 15px;
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .muscle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         .muscle-icon {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 122, 0, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: var(--primary-color);
-            font-size: 28px;
+            font-size: 20px;
         }
 
         .muscle-title {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 5px;
             font-weight: bold;
+            line-height: 1.3;
         }
 
         .muscle-subtitle {
             color: var(--primary-color);
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
 
         .muscle-desc {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.8;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* Nutrition Section */
         .nutrition-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             max-width: 1200px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
 
         .nutrition-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 8px;
+            padding: 15px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .nutrition-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         .nutrition-icon {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 122, 0, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 10px;
             color: var(--primary-color);
-            font-size: 28px;
+            font-size: 20px;
         }
 
         .nutrition-title {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 5px;
             font-weight: bold;
+            line-height: 1.3;
         }
 
         .nutrition-desc {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.8;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            flex-grow: 1;
         }
 
         .nutrition-value {
             background: rgba(255, 122, 0, 0.1);
             border: 1px solid var(--accent-border);
-            border-radius: 8px;
-            padding: 10px;
-            font-size: 18px;
+            border-radius: 6px;
+            padding: 6px;
+            font-size: 14px;
             font-weight: bold;
             color: var(--primary-color);
-            margin: 15px 0;
+            margin: 10px 0;
+            word-wrap: break-word;
         }
 
         .nutrition-sources {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.7;
             text-align: left;
+            margin-top: 5px;
+            line-height: 1.3;
         }
 
         .bju-table-card {
             background: var(--accent-bg);
             border: 1px solid var(--accent-border);
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 40px;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
             text-align: center;
             transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .bju-table-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .bju-icon {
-            font-size: 40px;
+            font-size: 32px;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .bju-title {
-            font-size: 24px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
         .bju-desc {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.8;
         }
 
         /* Supplements Section */
         .supplements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -348,52 +388,58 @@
         .supplement-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 8px;
+            padding: 15px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .supplement-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         .supplement-icon {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 122, 0, 0.1);
-            border-radius: 12px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 10px;
             color: var(--primary-color);
-            font-size: 28px;
+            font-size: 20px;
         }
 
         .supplement-title {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 5px;
             font-weight: bold;
+            line-height: 1.3;
         }
 
         .supplement-desc {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.8;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            flex-grow: 1;
         }
 
         .supplement-dosage {
             background: rgba(255, 122, 0, 0.1);
             border: 1px solid var(--accent-border);
-            border-radius: 8px;
-            padding: 10px;
-            font-size: 16px;
+            border-radius: 6px;
+            padding: 6px;
+            font-size: 14px;
             color: var(--primary-color);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
+            margin-top: auto;
         }
 
         .supplement-dosage::before {
@@ -404,39 +450,44 @@
         .additional-supplements {
             background: var(--accent-bg);
             border: 1px solid var(--accent-border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 40px;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 30px;
             text-align: center;
             transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .additional-supplements:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .additional-title {
-            font-size: 24px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
         .additional-list {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.8;
+            line-height: 1.4;
         }
 
         /* Workouts Section */
         .workout-icon {
-            font-size: 48px;
+            font-size: 32px;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .workout-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -444,50 +495,56 @@
         .workout-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 8px;
+            padding: 15px;
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .workout-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         .workout-icon-small {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             background: rgba(255, 122, 0, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 10px;
             color: var(--primary-color);
-            font-size: 20px;
+            font-size: 16px;
         }
 
         .workout-title {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 5px;
             font-weight: bold;
             display: flex;
             align-items: center;
+            line-height: 1.3;
         }
 
         .workout-desc {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.8;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            flex-grow: 1;
         }
 
         .workout-frequency {
             display: flex;
             align-items: center;
             color: var(--primary-color);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
+            margin-top: auto;
         }
 
         .workout-frequency::before {
@@ -497,28 +554,29 @@
 
         .workout-footer {
             text-align: center;
-            margin-top: 40px;
-            font-size: 16px;
+            margin-top: 30px;
+            font-size: 14px;
             opacity: 0.8;
         }
 
         /* Final CTA Section */
         .final-cta {
-            padding: 80px 20px;
+            padding: 60px 20px;
             background: linear-gradient(135deg, #000000 0%, #1a0c00 100%);
             text-align: center;
         }
 
         .final-cta h2 {
-            font-size: 48px;
+            font-size: 32px;
             margin-bottom: 10px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
 
         .final-cta p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            font-size: 16px;
+            max-width: 90%;
+            margin: 0 auto 30px;
             opacity: 0.9;
         }
 
@@ -527,63 +585,59 @@
             margin: 0 auto;
             background: var(--card-bg);
             border: 1px solid var(--accent-border);
-            border-radius: 12px;
-            padding: 40px;
+            border-radius: 8px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
             align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .final-container {
-                flex-direction: row;
-                align-items: flex-start;
-            }
         }
 
         .benefits-list {
             flex: 1;
             text-align: left;
-            padding-right: 30px;
+            width: 100%;
         }
 
         .benefits-list h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 18px;
+            margin-bottom: 15px;
         }
 
         .benefit-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .benefit-icon {
             color: var(--primary-color);
-            font-size: 24px;
-            margin-right: 10px;
+            font-size: 18px;
+            margin-right: 8px;
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .price-box {
             background: var(--accent-bg);
             border: 1px solid var(--accent-border);
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 8px;
+            padding: 20px;
             text-align: center;
-            flex: 0 0 300px;
+            width: 100%;
+            max-width: 300px;
         }
 
         .price-box p {
-            font-size: 18px;
+            font-size: 14px;
             opacity: 0.8;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .price-box .price {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: bold;
             margin: 10px 0;
         }
@@ -591,72 +645,76 @@
         .price-box .payment-type {
             color: var(--primary-color);
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .buy-now-btn {
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
+            padding: 12px 24px;
+            border-radius: 24px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.4);
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .buy-now-btn:hover {
             background-color: #e66d00;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 6px 16px rgba(255, 122, 0, 0.5);
         }
 
         .security-info {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 5px;
+            font-size: 12px;
             opacity: 0.7;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .security-icon {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .post-purchase {
-            margin-top: 30px;
-            font-size: 16px;
+            margin-top: 20px;
+            font-size: 14px;
             opacity: 0.8;
+            line-height: 1.4;
         }
 
         /* Footer */
         footer {
             text-align: right;
-            padding: 20px;
+            padding: 15px 20px;
             background: rgba(0,0,0,0.5);
         }
 
         .footer-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             background: white;
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
             color: #333;
         }
 
         .footer-logo {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             background: #333;
             border-radius: 4px;
             display: flex;
@@ -664,28 +722,53 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 10px;
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Responsiveness (already included in previous code, but optimized for mobile) */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 36px;
+                font-size: 28px;
             }
             
             .hero p {
-                font-size: 18px;
+                font-size: 14px;
             }
             
             .section h2 {
-                font-size: 36px;
+                font-size: 28px;
             }
             
             .section p {
-                font-size: 18px;
+                font-size: 14px;
             }
             
-            .features-grid,
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            .feature-card {
+                padding: 8px;
+            }
+            
+            .feature-icon {
+                font-size: 20px;
+            }
+            
+            .feature-title {
+                font-size: 12px;
+            }
+            
+            .description {
+                font-size: 14px;
+                margin: 20px auto;
+            }
+            
+            .cta-button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            
             .muscle-grid,
             .nutrition-grid,
             .supplements-grid,
@@ -693,18 +776,360 @@
                 grid-template-columns: 1fr;
             }
             
-            .cta-button {
+            .muscle-card,
+            .nutrition-card,
+            .supplement-card,
+            .workout-card {
+                padding: 12px;
+            }
+            
+            .muscle-icon,
+            .nutrition-icon,
+            .supplement-icon,
+            .workout-icon-small {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .muscle-title,
+            .nutrition-title,
+            .supplement-title,
+            .workout-title {
                 font-size: 16px;
-                padding: 12px 24px;
+            }
+            
+            .muscle-subtitle,
+            .nutrition-desc,
+            .supplement-desc,
+            .workout-desc {
+                font-size: 12px;
+            }
+            
+            .nutrition-value {
+                font-size: 12px;
+                padding: 4px;
+            }
+            
+            .nutrition-sources {
+                font-size: 11px;
+            }
+            
+            .bju-table-card {
+                padding: 15px;
+            }
+            
+            .bju-icon {
+                font-size: 28px;
+            }
+            
+            .bju-title {
+                font-size: 16px;
+            }
+            
+            .bju-desc {
+                font-size: 12px;
+            }
+            
+            .supplement-dosage {
+                font-size: 12px;
+                padding: 4px;
+            }
+            
+            .additional-supplements {
+                padding: 12px;
+            }
+            
+            .additional-title {
+                font-size: 16px;
+            }
+            
+            .additional-list {
+                font-size: 12px;
+            }
+            
+            .workout-frequency {
+                font-size: 12px;
+            }
+            
+            .workout-footer {
+                font-size: 12px;
+            }
+            
+            .final-cta h2 {
+                font-size: 28px;
+            }
+            
+            .final-cta p {
+                font-size: 14px;
             }
             
             .final-container {
-                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .benefits-list h3 {
+                font-size: 16px;
+            }
+            
+            .benefit-item {
+                font-size: 12px;
+            }
+            
+            .benefit-icon {
+                font-size: 16px;
             }
             
             .price-box {
-                flex: 1;
-                width: 100%;
+                padding: 15px;
+            }
+            
+            .price-box p {
+                font-size: 12px;
+            }
+            
+            .price-box .price {
+                font-size: 32px;
+            }
+            
+            .price-box .payment-type {
+                font-size: 12px;
+            }
+            
+            .buy-now-btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            
+            .security-info {
+                font-size: 11px;
+            }
+            
+            .post-purchase {
+                font-size: 12px;
+            }
+            
+            .nav-menu a {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            
+            .buy-btn {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .logo {
+                font-size: 18px;
+            }
+        }
+        
+        /* Even smaller screens */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 15px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .hero p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+            
+            .features-grid {
+                gap: 8px;
+            }
+            
+            .feature-card {
+                padding: 6px;
+            }
+            
+            .feature-icon {
+                font-size: 18px;
+            }
+            
+            .feature-title {
+                font-size: 11px;
+            }
+            
+            .description {
+                font-size: 14px;
+                margin: 15px auto;
+            }
+            
+            .cta-button {
+                font-size: 14px;
+                padding: 10px 16px;
+                max-width: 100%;
+            }
+            
+            .section {
+                padding: 50px 15px;
+            }
+            
+            .section h2 {
+                font-size: 24px;
+            }
+            
+            .section p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+            
+            .muscle-card,
+            .nutrition-card,
+            .supplement-card,
+            .workout-card {
+                padding: 10px;
+            }
+            
+            .muscle-icon,
+            .nutrition-icon,
+            .supplement-icon,
+            .workout-icon-small {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+            
+            .muscle-title,
+            .nutrition-title,
+            .supplement-title,
+            .workout-title {
+                font-size: 14px;
+            }
+            
+            .muscle-subtitle,
+            .nutrition-desc,
+            .supplement-desc,
+            .workout-desc {
+                font-size: 11px;
+            }
+            
+            .nutrition-value {
+                font-size: 11px;
+                padding: 3px;
+            }
+            
+            .nutrition-sources {
+                font-size: 10px;
+            }
+            
+            .bju-table-card {
+                padding: 10px;
+            }
+            
+            .bju-icon {
+                font-size: 24px;
+            }
+            
+            .bju-title {
+                font-size: 14px;
+            }
+            
+            .bju-desc {
+                font-size: 11px;
+            }
+            
+            .supplement-dosage {
+                font-size: 11px;
+                padding: 3px;
+            }
+            
+            .additional-supplements {
+                padding: 10px;
+            }
+            
+            .additional-title {
+                font-size: 14px;
+            }
+            
+            .additional-list {
+                font-size: 11px;
+            }
+            
+            .workout-frequency {
+                font-size: 11px;
+            }
+            
+            .workout-footer {
+                font-size: 11px;
+            }
+            
+            .final-cta {
+                padding: 50px 15px;
+            }
+            
+            .final-cta h2 {
+                font-size: 24px;
+            }
+            
+            .final-cta p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+            
+            .final-container {
+                padding: 10px;
+            }
+            
+            .benefits-list h3 {
+                font-size: 14px;
+            }
+            
+            .benefit-item {
+                font-size: 11px;
+            }
+            
+            .benefit-icon {
+                font-size: 14px;
+            }
+            
+            .price-box {
+                padding: 10px;
+            }
+            
+            .price-box p {
+                font-size: 11px;
+            }
+            
+            .price-box .price {
+                font-size: 28px;
+            }
+            
+            .price-box .payment-type {
+                font-size: 11px;
+            }
+            
+            .buy-now-btn {
+                font-size: 14px;
+                padding: 10px 16px;
+                max-width: 100%;
+            }
+            
+            .security-info {
+                font-size: 10px;
+            }
+            
+            .post-purchase {
+                font-size: 11px;
+            }
+            
+            .nav-menu a {
+                font-size: 11px;
+                padding: 5px 8px;
+            }
+            
+            .buy-btn {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+            
+            .logo {
+                font-size: 16px;
             }
         }
     </style>
