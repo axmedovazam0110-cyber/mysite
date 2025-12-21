@@ -1,170 +1,987 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAva</title>
-    <link rel="stylesheet" href="null.css">
-    <script src="index.js"></script>
+    <title>Умный масса набор</title>
+    <style>
+        :root {
+            --primary-color: #FF7A00;
+            --secondary-color: #121212;
+            --text-color: #FFFFFF;
+            --card-bg: #1E1E24;
+            --card-border: #333333;
+            --accent-bg: #2A1B0F;
+            --accent-border: #FF7A00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Плавный скролл */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #000000;
+            border-bottom: 1px solid var(--accent-border);
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .buy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: #e66d00;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #000000 0%, #1a0c00 100%);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+
+        .feature-card {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 122, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 40px auto 40px;
+            text-align: center;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #e66d00;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5);
+        }
+
+        /* Section Template */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        /* Muscle Groups Section */
+        .muscle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .muscle-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .muscle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .muscle-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .muscle-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .muscle-subtitle {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .muscle-desc {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Nutrition Section */
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .nutrition-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nutrition-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .nutrition-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .nutrition-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .nutrition-desc {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .nutrition-value {
+            background: rgba(255, 122, 0, 0.1);
+            border: 1px solid var(--accent-border);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 15px 0;
+        }
+
+        .nutrition-sources {
+            font-size: 14px;
+            opacity: 0.7;
+            text-align: left;
+        }
+
+        .bju-table-card {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .bju-table-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bju-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .bju-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .bju-desc {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Supplements Section */
+        .supplements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .supplement-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .supplement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .supplement-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .supplement-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .supplement-desc {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .supplement-dosage {
+            background: rgba(255, 122, 0, 0.1);
+            border: 1px solid var(--accent-border);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 16px;
+            color: var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .supplement-dosage::before {
+            content: "✓";
+            font-weight: bold;
+        }
+
+        .additional-supplements {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .additional-supplements:hover {
+            transform: translateY(-5px);
+        }
+
+        .additional-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .additional-list {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Workouts Section */
+        .workout-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .workout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .workout-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .workout-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .workout-icon-small {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .workout-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .workout-desc {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .workout-frequency {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .workout-frequency::before {
+            content: "📅";
+            margin-right: 5px;
+        }
+
+        .workout-footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #000000 0%, #1a0c00 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .final-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .final-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .benefits-list {
+            flex: 1;
+            text-align: left;
+            padding-right: 30px;
+        }
+
+        .benefits-list h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .benefit-icon {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .price-box {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            flex: 0 0 300px;
+        }
+
+        .price-box p {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .price-box .price {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .price-box .payment-type {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .buy-now-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #e66d00;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5);
+        }
+
+        .security-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 15px;
+        }
+
+        .security-icon {
+            font-size: 16px;
+        }
+
+        .post-purchase {
+            margin-top: 30px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: right;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .footer-logo {
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section h2 {
+                font-size: 36px;
+            }
+            
+            .section p {
+                font-size: 18px;
+            }
+            
+            .features-grid,
+            .muscle-grid,
+            .nutrition-grid,
+            .supplements-grid,
+            .workout-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+            
+            .final-container {
+                flex-direction: column;
+            }
+            
+            .price-box {
+                flex: 1;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-<body id="back"></body>
-
-<header class="navbar">
-    <div class="logo">Умный Масса-Набор</div>
-
-    <nav class="menu">
-        <a href="#title">Главная</a>
-        <a>Отзывы</a>
-        <a href="#buy">Купить</a>
-    </nav>
-</header>
-
 <body>
-    <h1 id="title">Умный Масса-Набор</h1>
-    <h3 id="subtitle">Научный подход к набору мышечной массы</h3>
-    <h4 id="description">Персонализированная программа тренировок и питания</h4>
-</body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">Умный масса набор</a>
+            <nav class="nav-menu">
+                <a href="#">Главная</a>
+                <a href="#buy-section" class="buy-btn">Купить продукт</a>
+            </nav>
+        </div>
+    </header>
 
-
-<body> 
-    <h1 id="title_2" id="tyt">Умный Масса-Набор</h1>
-    <p id="text_1">Умный Масса-Набор — система для тех, кто хочет набирать чистую мышечную массу, а не случайный вес.
-    Это не просто тренировки. Это алгоритм роста, созданный по принципам спортивной физиологии, прогрессии нагрузки и умного питания.
-    Набери +6…+12 кг мышц за 90 дней — без жира, без перетренировок, без хаоса.</p> 
-</body>
-
-<body>
-    <h5 id="title_3">Зачем это система нужна</h5>
-    <p id="text_2">Большинство пытается качаться по роликам из интернета.
-    Кто-то тренируется “на ощущениях”.
-    Кто-то ест всё подряд, надеясь на быстрый рост.
-    И все получают одно и то же — нулевой прогресс.
-    Умный Масса-Набор создан, чтобы убрать угадывания и дать готовый маршрут, по которому тело растёт на автомате.</p>
-</body>
-
-<body>
-    <h4 id="title_4">Основа программы — Умная физиология</h6>
-    <ol id="list" start="1">
-        <li id="interval">Прогрессия нагрузки — ты растёшь только тогда, когда нагрузка растёт по системе, а не хаотично.
-        <li id="interval_2">Суперкомпенсация — правильные интервалы отдыха между мышечными системами.
-        <li id="interval_3">Сбалансированное питание — калории, БЖУ, режим и лёгкие доступные продукты.
-    </ol>
-</body>
-
-<body>
-    <h5 id="title_5">Что ты получаешь внутри</h5>
-    <ol id="list_2">
-        <li>Тренировочная система на 7 мышечных групп</li>
-        <li>Программа роста на 90 дней (помесячная)</li>
-        <li>Личный расчёт калорий и БЖУ</li>
-        <li>Питание для чистого массонабора</li>
-        <li>Гайд по спортивным добавкам</li>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Умный Масса Набор</h1>
+        <p>Полное руководство по набору мышечной массы: 7 групп мышц, питание, БЖУ-таблицы и программы тренировок</p>
         
-    </ol>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <div class="feature-title">7 групп мышц</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <div class="feature-title">Таблицы БЖУ</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <div class="feature-title">Программы тренировок</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <div class="feature-title">Спортивные добавки</div>
+            </div>
+        </div>
+        
+        <div class="description">
+            Если ты хочешь изменить своё тело — сделать его сильным, подтянутым и эстетичным — ты должен понимать, как работает каждая мышца, какую функцию она выполняет и какие упражнения наиболее эффективно её развивают. Этот материал — это не просто набор упражнений. Это системное понимание, основанное на физиологии, анатомии и практике. Каждая из 7 ключевых мышечных систем будет подробно разобрана: ты узнаешь не только, что качать, но и зачем и как.
+        </div>
+        
+        <a href="#buy-section" class="cta-button">Купить курс за 1999 ₽ →</a>
+    </section>
+
+    <!-- Muscle Groups Section -->
+    <section class="section">
+        <h2>Что входит в курс</h2>
+        <p>7 ключевых групп мышц с подробным разбором</p>
+        
+        <div class="muscle-grid">
+            <div class="muscle-card">
+                <div class="muscle-icon">💪</div>
+                <h3 class="muscle-title">Руки</h3>
+                <p class="muscle-subtitle">Бицепс и трицепс</p>
+                <p class="muscle-desc">Полный разбор анатомии, лучших упражнений и типичных ошибок при тренировке рук</p>
+            </div>
+            <div class="muscle-card">
+                <div class="muscle-icon">↔️</div>
+                <h3 class="muscle-title">Плечи</h3>
+                <p class="muscle-subtitle">Дельтовидные мышцы</p>
+                <p class="muscle-desc">Передний, средний и задний пучки — как тренировать для максимальной ширины</p>
+            </div>
+            <div class="muscle-card">
+                <div class="muscle-icon">🛡️</div>
+                <h3 class="muscle-title">Грудь</h3>
+                <p class="muscle-subtitle">Грудные мышцы</p>
+                <p class="muscle-desc">Верх, середина и низ груди — упражнения для полного развития</p>
+            </div>
+            <div class="muscle-card">
+                <div class="muscle-icon">📦</div>
+                <h3 class="muscle-title">Спина</h3>
+                <p class="muscle-subtitle">Широчайшие и трапеции</p>
+                <p class="muscle-desc">Как правильно тянуть спиной, а не руками — секрет роста широчайших</p>
+            </div>
+            <div class="muscle-card">
+                <div class="muscle-icon">🎯</div>
+                <h3 class="muscle-title">Пресс</h3>
+                <p class="muscle-subtitle">Мышцы живота</p>
+                <p class="muscle-desc">Прямая мышца, косые мышцы и техника для видимых кубиков</p>
+            </div>
+            <div class="muscle-card">
+                <div class="muscle-icon">🦵</div>
+                <h3 class="muscle-title">Ноги</h3>
+                <p class="muscle-subtitle">Квадрицепс и бицепс бедра</p>
+                <p class="muscle-desc">50% мышечной массы — без них не станешь по настоящему сильным</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section class="section">
+        <h2>Питание для набора массы</h2>
+        <p>Белки, углеводы и жиры — что они дают при наборе мышц</p>
+        
+        <div class="nutrition-grid">
+            <div class="nutrition-card">
+                <div class="nutrition-icon">🍗</div>
+                <h3 class="nutrition-title">Белки</h3>
+                <p class="nutrition-desc">Строительный материал мышц</p>
+                <div class="nutrition-value">1.8-2.2 г на 1 кг веса</div>
+                <p class="nutrition-sources"><strong>Источники:</strong> Курица, индейка, яйца, говядина, рыба, творог</p>
+            </div>
+            <div class="nutrition-card">
+                <div class="nutrition-icon">🌾</div>
+                <h3 class="nutrition-title">Углеводы</h3>
+                <p class="nutrition-desc">Энергия и памп для тренировок</p>
+                <div class="nutrition-value">3-5 г на 1 кг веса</div>
+                <p class="nutrition-sources"><strong>Источники:</strong> Рис, овсянка, гречка, картошка, паста</p>
+            </div>
+            <div class="nutrition-card">
+                <div class="nutrition-icon">💧</div>
+                <h3 class="nutrition-title">Жиры</h3>
+                <p class="nutrition-desc">Гормоны и анаболизм</p>
+                <div class="nutrition-value">0.8-1 г на 1 кг веса</div>
+                <p class="nutrition-sources"><strong>Источники:</strong> Лосось, орехи, авокадо, оливковое масло</p>
+            </div>
+        </div>
+        
+        <div class="bju-table-card">
+            <div class="bju-icon">📊</div>
+            <h3 class="bju-title">Таблица БЖУ продуктов</h3>
+            <p class="bju-desc">Полная таблица БЖУ на 100 г продукта для более 50 продуктов</p>
+        </div>
+    </section>
+
+    <!-- Supplements Section -->
+    <section class="section">
+        <h2>Спортивные добавки</h2>
+        <p>Что реально работает</p>
+        
+        <div class="supplements-grid">
+            <div class="supplement-card">
+                <div class="supplement-icon">🧪</div>
+                <h3 class="supplement-title">Протеин</h3>
+                <p class="supplement-desc">Быстро усваивается, идеален после тренировки</p>
+                <div class="supplement-dosage">1-2 порции в день</div>
+            </div>
+            <div class="supplement-card">
+                <div class="supplement-icon">⚡</div>
+                <h3 class="supplement-title">Креатин</h3>
+                <p class="supplement-desc">Повышает силу и выносливость</p>
+                <div class="supplement-dosage">3-5 г в день</div>
+            </div>
+            <div class="supplement-card">
+                <div class="supplement-icon">🔥</div>
+                <h3 class="supplement-title">Гейнер</h3>
+                <p class="supplement-desc">Для набора массы при быстром метаболизме</p>
+                <div class="supplement-dosage">После тренировки</div>
+            </div>
+        </div>
+        
+        <div class="additional-supplements">
+            <h3 class="additional-title">+ Дополнительные добавки</h3>
+            <p class="additional-list">BCAA, Омега-3, Витамин D, Магний, Цинк и другие</p>
+        </div>
+    </section>
+
+    <!-- Workouts Section -->
+    <section class="section">
+        <div class="workout-icon">⚡</div>
+        <h2>Типы тренировок</h2>
+        <p>Выберите подходящий сплит для ваших целей</p>
+        
+        <div class="workout-grid">
+            <div class="workout-card">
+                <div class="workout-title">
+                    <div class="workout-icon-small">📈</div>
+                    Full Body
+                </div>
+                <p class="workout-desc">Вся мышечная система за тренировку</p>
+                <div class="workout-frequency">3 раза в неделю</div>
+            </div>
+            <div class="workout-card">
+                <div class="workout-title">
+                    <div class="workout-icon-small">📈</div>
+                    Верх/Низ
+                </div>
+                <p class="workout-desc">Отдельно тренируем верх и низ</p>
+                <div class="workout-frequency">4 раза в неделю</div>
+            </div>
+            <div class="workout-card">
+                <div class="workout-title">
+                    <div class="workout-icon-small">📈</div>
+                    Тяни/Толкай/Ноги
+                </div>
+                <p class="workout-desc">Разделение по типу движений</p>
+                <div class="workout-frequency">3-6 раз в неделю</div>
+            </div>
+            <div class="workout-card">
+                <div class="workout-title">
+                    <div class="workout-icon-small">📈</div>
+                    Сплит по мышцам
+                </div>
+                <p class="workout-desc">Каждая группа мышц в отдельный день</p>
+                <div class="workout-frequency">5-6 раз в неделю</div>
+            </div>
+        </div>
+        
+        <div class="workout-footer">
+            В курсе подробно разобрана каждая схема тренировок
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="buy-section" class="final-cta">
+        <h2>Начни своё преобразование сейчас</h2>
+        <p>Полный доступ к курсу навсегда</p>
+        
+        <div class="final-container">
+            <div class="benefits-list">
+                <h3>Вы получите:</h3>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Полный разбор 7 групп мышц</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Анатомия и физиология каждой мышцы</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Лучшие упражнения для каждой группы</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Типичные ошибки и как их избежать</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Полная таблица БЖУ на 50+ продуктов</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Расчет макронутриентов для набора массы</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>4 типа тренировочных сплитов</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>Гид по спортивным добавкам</span>
+                </div>
+            </div>
+            
+            <div class="price-box">
+                <p>Стоимость курса</p>
+                <div class="price">1999 ₽</div>
+                <p class="payment-type">Единоразовый платеж</p>
+                
+                <a href="#" class="buy-now-btn">
+                    <span>🛒</span>
+                    Купить сейчас
+                    <span>→</span>
+                </a>
+                
+                <div class="security-info">
+                    <span class="security-icon">🔒</span>
+                    Безопасная оплата через ЮКасса
+                </div>
+            </div>
+        </div>
+        
+        <div class="post-purchase">
+            После оплаты вы немедленно получите доступ к курсу на электронную почту
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-badge">
+            <div class="footer-logo">e</div>
+            Made with Emergent
+        </div>
+    </footer>
 </body>
-
-<body>
-    <h6 id="title_6">Для кого это программа</h6>
-    <ul id="list_3">
-        <li>новичкам, которые хотят быстрые + качественные результаты</li>
-        <li>худым, кому сложно набирать (“эктоморфы”)</li>
-        <li>тем, кто уже тренируется, но стоит на месте</li>
-        <li>тем, кто хочет системный подход без хаоса</li>
-        <li>тем, кто хочет просто следовать плану и расти</li>
-    </ul>
-</body>
-
-
-<div class="card" id="buy">
-    <div class="card__border"></div>
-    <div class="card_title__container">
-    <span class="card_title">Умный Масса-Набор</span>
-    <p class="card_paragraph">РЕЗУЛЬТАТЫ, КОТОРЫЕ ТЫ ПОЛУЧИШЬ</p>
-    </div>
-    <hr class="line" />
-    <ul class="card__list">
-    <li class="card__list_item">
-        <span class="check">
-        <svg
-            class="check_svg"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg">
-        <path
-            clip-rule="evenodd"
-            d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-            fill-rule="evenodd"></path>
-        </svg>
-        </span>
-        <span class="list_text">Ощутимый рост массы</span>
-    </li>
-    <li class="card__list_item">
-        <span class="check">
-        <svg
-            class="check_svg"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-        <path
-            clip-rule="evenodd"
-            d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-            fill-rule="evenodd"></path>
-        </svg>
-        </span>
-        <span class="list_text">Увеличение силы</span>
-    </li>
-    <li class="card__list_item">
-        <span class="check">
-        <svg
-            class="check_svg"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg">
-        <path
-            clip-rule="evenodd"
-            d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-            fill-rule="evenodd"></path>
-        </svg>
-        </span>
-        <span class="list_text">Техника движений “как у профи”</span>
-    </li>
-    <li class="card__list_item">
-        <span class="check">
-        <svg
-            class="check_svg"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-        <path
-            clip-rule="evenodd"
-            d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-            fill-rule="evenodd"></path>
-        </svg>
-        </span>
-        <span class="list_text">Понимание питания и режима</span>
-    </li>
-    <li class="card__list_item">
-        <span class="check">
-        <svg
-            class="check_svg"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg">
-        <path
-            clip-rule="evenodd"
-            d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-            fill-rule="evenodd"></path>
-        </svg>
-        </span>
-        <span class="list_text">стабильный прогресс</span>
-    </li>
-    </ul>
-    <button class="button">Купить сейчас за 1999руб</button>
-</div>
-
-
-
-
 </html>
